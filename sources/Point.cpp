@@ -21,9 +21,9 @@ double Point::getY()
     return this->y_coordinate;
 }
 
-void Point::print()
+string Point::print()
 {
-    cout << '(' << this->getX() << ',' << this->getY() << ')' << endl;
+    return "(" + to_string(this->getX()) + "," + to_string(this->getY()) + ")";
 }
 
 Point Point:: moveTowards (Point& srcPoint, Point& destPoint, double distance)

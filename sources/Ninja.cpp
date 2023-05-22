@@ -9,8 +9,10 @@ int Ninja::getSpeed()
 
 string Ninja::print()
 {   
-    //TODO
-    return "Ninja";
+    string ninjaOutput = "Character Type: N";
+    ninjaOutput += Character::print();
+    
+    return ninjaOutput;
 }
 
 void Ninja::move(Character* enemy)

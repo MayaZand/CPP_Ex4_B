@@ -36,9 +36,9 @@ namespace ariel
         double distance(Point other);
 
         /*
-        this method prints the X ant Y coordinate of the point  in this formate: (x,y)
+        this method prints the X ant Y coordinate of the point in this formate: (x,y)
         */
-        void print();
+        string print();
 
         /*
         this method accepts source point, destination point and a distance.

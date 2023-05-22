@@ -9,8 +9,10 @@ int Cowboy::getNumOfBullets()
 
 string Cowboy::print() 
 {
-    //string toPrint = "C (" + this->getName() +") location: " + this->getLocation().print();
-    return "toPrint";
+    string cowboyOutput = "Character Type: C";
+    cowboyOutput += Character::print();
+    
+    return cowboyOutput;
 }
 
 bool Cowboy::hasBullets() const

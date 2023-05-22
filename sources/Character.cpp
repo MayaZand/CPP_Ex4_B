@@ -38,3 +38,27 @@ int Character::getHitPoints()
 {
     return this->hitPoint;
 }
+
+string Character::print()
+{
+    string output;
+
+    output += "\nName: ";
+    if (this->getHitPoints() <= 0) // if the character is dead
+    {
+        output += "(" + this->getName() + ")";
+    } 
+    else 
+    {
+        output += this->getName();
+    }
+    
+    output += "\n";
+    if (this->getHitPoints() > 0) {
+        output += "Hit Points: " + to_string(this->getHitPoints()) + "\n";
+    }
+
+    output += "Location: " + this->location.print() + "\n";
+
+    return output;
+}

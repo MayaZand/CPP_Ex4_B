@@ -61,6 +61,6 @@ namespace ariel
         if the character is dead, the number of hit points will not be printed, and the character's name will appear in parentheses.
         Before the name will appear a letter indicating the type of character: N for ninja and C for cowboy.
         */
-        virtual string print() = 0;
+        virtual string print();
     };
 }
