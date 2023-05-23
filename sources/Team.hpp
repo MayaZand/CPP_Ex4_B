@@ -20,7 +20,7 @@ namespace ariel
         vector<Character *> warriors;
 
     public:
-        Character *chooseVictim(Team *enemyTeam); 
+
         /* constructor & destructor: */
         Team(Character *leader);
         virtual ~Team();
@@ -31,22 +31,9 @@ namespace ariel
         Team(Team &&other) noexcept;
         Team &operator=(Team &&other) noexcept;
 
-        /*
-    this method will select a new leader from the team, if the existing leader dies.
-    The new leader is the closest living character to the dead leader.
-    */
-        void chooseNewLeader();
-
-        /*
-        this method will select a victim from the team of enemies.
-        The victim is a member of the enemy team which is alive and is the closest team member to the leader of the attacking team.
-        @param enemyTeam is the pointer to the team of enemies.
-        @return pointer to the victim.
-        */
-
         /* METHODS: */
 
-        /* getters: */
+        /* getters & setters: */
 
         /*
         @return the size of the team (vector)
@@ -59,12 +46,12 @@ namespace ariel
         /*
         @return the pointer to the warriors team
         */
-        const vector<Character *> &getWarriorsTeam() const
+        const vector<Character *>& getWarriorsTeam() const
         {
             return warriors;
         }
 
-        const Character *getLeader() const
+        const Character* getLeader() const
         {
             return leader;
         }
@@ -73,6 +60,20 @@ namespace ariel
         {
             this->leader = leader;
         }
+
+        /*
+        this method will select a new leader from the team, if the existing leader dies.
+        The new leader is the closest living character to the dead leader.
+        */
+        void chooseNewLeader();
+
+        /*
+        this method will select a victim from the team of enemies.
+        The victim is a member of the enemy team which is alive and is the closest team member to the leader of the attacking team.
+        @param enemyTeam is the pointer to the team of enemies.
+        @return pointer to the victim.
+        */
+        Character* chooseVictim (Team *enemyTeam); 
 
         /*
         This method adds a cowboy or ninja to the group.
@@ -98,3 +99,6 @@ namespace ariel
     };
 
 }
+
+
+

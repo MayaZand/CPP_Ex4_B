@@ -8,12 +8,12 @@ namespace ariel
 
     class Cowboy : public Character
     {
-        /* fields - private by default: */
+
     private:
         int numOfBullets;
 
     public:
-        /*constructor: */
+        /* constructor: */
 
         Cowboy(string name, const Point &point);
 

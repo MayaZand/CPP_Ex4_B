@@ -7,7 +7,9 @@ namespace ariel
 {
     class Point
     {
-        /* fields - private by default: */
+    
+    private:
+
         double x_coordinate;
         double y_coordinate;
 
