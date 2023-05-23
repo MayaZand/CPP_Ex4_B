@@ -7,7 +7,7 @@ void SmartTeam::attack(Team* enemys)
 
 }
 
-void SmartTeam::print() 
+void SmartTeam::print() const
 {
     
 }

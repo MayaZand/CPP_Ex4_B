@@ -20,6 +20,6 @@ namespace ariel
         /*
         this method prints all details of the group members.
         */
-        virtual void print() override;
+        void print() const override;
     };
 }

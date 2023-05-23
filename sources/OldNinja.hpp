@@ -1,3 +1,4 @@
+#pragma once
 #include "Ninja.hpp"
 
 using namespace std;
@@ -11,6 +12,6 @@ namespace ariel
     public:
         /* constructor: */
 
-        OldNinja(string name, Point location) : Ninja(name, location, 150, 8) {}
+        OldNinja(string name, const Point& location);
     };
 }

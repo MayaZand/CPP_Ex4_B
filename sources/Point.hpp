@@ -22,23 +22,23 @@ namespace ariel
         /*
         @return the x coordinate of the point
         */
-        double getX();
+        double getX() const;
 
         /*
         @return the y coordinate of the point
         */
-        double getY();
+        double getY() const;
 
         /*
         @return the distance between this point and other point.
         @param other is the other point.
         */
-        double distance(Point other);
+        double distance(const Point& other) const;
 
         /*
         this method prints the X ant Y coordinate of the point in this formate: (x,y)
         */
-        string print();
+        string print() const;
 
         /*
         this method accepts source point, destination point and a distance.
@@ -47,6 +47,6 @@ namespace ariel
         @param destPoint is the destination point
         @param distance is the max distance that can be moved from the source point to the destination point.
         */
-        static Point moveTowards(Point &srcPoint, Point &destPoint, double distance);
+        static Point moveTowards(const Point& srcPoint, const Point& destPoint, double distance);
     };
 }

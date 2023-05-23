@@ -19,7 +19,7 @@ void Team2::attack(Team* enemies)
         throw runtime_error("all of the enemies team members are dead");
     }
 
-    if (this->leader->isAlive() == false)
+    if (this->getLeader()->isAlive() == false)
     {
         this->chooseNewLeader();
     }
@@ -27,51 +27,53 @@ void Team2::attack(Team* enemies)
     // choose victim from the enemies team
     Character* theVictim = chooseVictim(enemies);
 
-    for(unsigned int i=0; i<this->warriors.size(); i++) 
+    for (Character* warrior: this->getWarriorsTeam())
     {
-        
-        
-        if (Ninja* ninja = dynamic_cast<Ninja*>(enemies->getWarriorsTeam()[i]))
+        if (!theVictim->isAlive())
         {
-            ninjaAttack(enemies, theVictim);
-        }
-        
-        
-        
-        else if (Cowboy* cowboy = dynamic_cast<Cowboy*>(enemies->getWarriorsTeam()[i]))
-        {
-            cowboyAttack(enemies, theVictim);
-        }
-        
-        if (theVictim->isAlive() == false) 
-        {
-            if (enemies->stillAlive() == 0) // if the victim is dead and also all enemies team members are dead
+            if (enemies->stillAlive() == 0)
             {
                 return;
-            } 
-            
-            else // if the victim is dead but there is at least one member of the enemies team still alive, a new victim is chosen
+            }
+
+            theVictim = chooseVictim(enemies);
+        }
+
+        Cowboy* cowboy = dynamic_cast<Cowboy*>(warrior);
+        Ninja* ninja = dynamic_cast<Ninja*>(warrior);
+
+        if (cowboy != nullptr && cowboy->isAlive())
+        {
+            if (cowboy->hasboolets())
             {
-                theVictim = chooseVictim(enemies);
+                cowboy->shoot(theVictim);
+            }
+
+            else
+            {
+                cowboy->reload();
+            }
+        }
+
+        else if (ninja != nullptr && ninja->isAlive())
+        {
+            if (ninja->distance(theVictim) <= 1)
+            {
+                ninja->slash(theVictim);
+            }
+
+            else
+            {
+                ninja->move(theVictim);
             }
         }
     }
 }
 
-void Team2::print() 
+void Team2::print() const
 {
-    for (unsigned int i=0; i<this->getWarriorsTeam().size(); i++) // print all the team members in the order they were added
+    for (Character* warrior : this->getWarriorsTeam())
     {
-        
-        if (Ninja* ninja = dynamic_cast<Ninja*>(this->getWarriorsTeam()[i]))
-        {
-            cout << ninja->print() << endl;
-        }
-
-        else if (Cowboy* cowboy = dynamic_cast<Cowboy*>(this->getWarriorsTeam()[i]))
-        {
-            cout << cowboy->print() << endl;
-
-        }
+        cout << warrior->print() << endl;
     }
 }

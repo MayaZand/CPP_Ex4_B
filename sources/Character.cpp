@@ -2,28 +2,44 @@
 
 using namespace ariel;
 
-bool Character::isInTeam()
+Character::Character(string characterName, const Point &location, int hitPoint) : characterName(characterName), location(location), hitPoint(hitPoint) {}
+
+string Character::getName() const 
 {
-    return this->inTeam;
+    return characterName;
 }
 
-void Character::setStatus(bool status)
+const Point& Character::getLocation() const 
 {
-    this->inTeam = status;
+    return location;
 }
 
-
-bool Character::isAlive()
+int Character::getHitPoints() const 
 {
-    if (this->hitPoint <= 0)
-    {
-        return false;
-    }
-    
-    return true;
+    return hitPoint;
 }
 
-double Character::distance(Character* other)
+void Character::setStatus(bool status) 
+{
+    inTeam = status;
+}
+
+void Character::setLocation(const Point &location) 
+{
+    this->location = location;
+}
+
+bool Character::isInTeam() const 
+{
+    return inTeam;
+}
+
+bool Character::isAlive() const 
+{
+    return hitPoint > 0;
+}
+
+double Character::distance(Character* other) const
 {
     double distanceBetween = this->getLocation().distance(other->getLocation());
     
@@ -32,29 +48,20 @@ double Character::distance(Character* other)
 
 void Character::hit(int num)
 {
+    if (num < 0)
+    {
+        throw invalid_argument("num is negative");
+    }
+    
     this->hitPoint = this->hitPoint - num;
 }
 
-string Character::getName()
-{
-    return this->characterName;
-}
-
-Point& Character::getLocation()
-{
-    return this->location;
-}
-
-int Character::getHitPoints()
-{
-    return this->hitPoint;
-}
-
-string Character::print()
+string Character::print() const
 {
     string output;
 
     output += "\nName: ";
+   
     if (this->getHitPoints() <= 0) // if the character is dead
     {
         output += "(" + this->getName() + ")";
@@ -65,12 +72,12 @@ string Character::print()
     }
     
     output += "\n";
+   
     if (this->getHitPoints() > 0) {
         output += "Hit Points: " + to_string(this->getHitPoints()) + "\n";
     }
 
-    output += "Location: (" + to_string(this->location.getX()) + "," + to_string(this->location.getY()) + ")";
-    //output += "Location: " + this->location.print() + "\n";
+    output += "Location: " + this->location.print() + "\n";
 
     return output;
 }

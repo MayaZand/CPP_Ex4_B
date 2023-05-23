@@ -9,57 +9,69 @@ namespace ariel
     class Character
     {
 
-    protected:
+    private:
         string characterName;
-        Point& location;
+        Point location;
         int hitPoint;
         bool inTeam = false;
 
     public:
         /* counstructor & destructor: */
 
-        Character(string characterName, Point& location, int hitPoint) : characterName(characterName), location(location), hitPoint(hitPoint) {}
+        Character(string characterName, const Point &location, int hitPoint);
         virtual ~Character() = default;
+
+        Character(Character &&other) noexcept = default;
+        Character(const Character &other) = default;
+
+        Character &operator=(const Character &other) = default;
+        Character &operator=(Character &&other) noexcept = default;
+
 
         /* METHODS: */
 
-        /* getters: */
-
+        /* getters & setters: */
+        
         /*
-        @return true if the character is already in the team
+        @return the character's name.
         */
-        bool isInTeam();
+        string getName() const;
+        
+        /*
+        @return the character's location
+        */
+        const Point& getLocation() const;
+        
+        /*
+        @return the number of the character's hitpoints
+        */
+        int getHitPoints() const;
 
         /*
-        this method updates the status of the character
+        this method updates the status of the character - if it is already in the team or not.
         */
         void setStatus(bool status);
 
         /*
-        @return the character's name.
+        this method updates the character's location.
         */
-        string getName();
+        void setLocation(const Point &location);
 
         /*
-        @return the character's location
+        @return true if the character is already in the team
         */
-        Point& getLocation();
-
-        /*
-        @return the number of the character's hitpoints
-        */
-        int getHitPoints();
+        bool isInTeam() const;
 
         /*
         @return true if the character is alive, and false otherwise.
         */
-        bool isAlive();
+        bool isAlive() const;
 
         /*
         @return the distance between the two characters.
         @param other is the other character.
         */
-        double distance(Character* other);
+        double distance(Character *other) const;
 
         /*
         this method subtracts the amount of hit points from the character.
@@ -72,6 +84,6 @@ namespace ariel
         if the character is dead, the number of hit points will not be printed, and the character's name will appear in parentheses.
         Before the name will appear a letter indicating the type of character: N for ninja and C for cowboy.
         */
-        virtual string print();
+        virtual string print() const;
     };
 }

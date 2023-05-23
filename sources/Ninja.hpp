@@ -9,13 +9,13 @@ namespace ariel
     class Ninja : public Character
     {
 
-    protected:
+    private:
         int speed;
     
     public:
         /* constructor: */
 
-        Ninja(string name, Point& location, int hitPoints, int speed) : Character(name, location, hitPoints), speed(speed) {}
+        Ninja(string name, const Point& location, int hitPoints, int speed);
 
         /* METHODS: */
 
@@ -26,7 +26,7 @@ namespace ariel
         if the character is dead, the number of hit points will not be printed, and the character's name will appear in parentheses.
         Before the name will appear a letter indicating the type of character: N for ninja and C for cowboy.
         */
-        string print() override;
+        string print() const override;
 
         /* getters: */
 
