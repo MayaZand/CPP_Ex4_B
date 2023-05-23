@@ -13,16 +13,27 @@ namespace ariel
         string characterName;
         Point& location;
         int hitPoint;
+        bool inTeam = false;
 
     public:
         /* counstructor & destructor: */
 
-        Character(string characterName, Point &location, int hitPoint) : characterName(characterName), location(location), hitPoint(hitPoint) {}
+        Character(string characterName, Point& location, int hitPoint) : characterName(characterName), location(location), hitPoint(hitPoint) {}
         virtual ~Character() = default;
 
         /* METHODS: */
 
         /* getters: */
+
+        /*
+        @return true if the character is already in the team
+        */
+        bool isInTeam();
+
+        /*
+        this method updates the status of the character
+        */
+        void setStatus(bool status);
 
         /*
         @return the character's name.

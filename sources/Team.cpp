@@ -2,6 +2,17 @@
 
 using namespace ariel;
 
+Team::Team(Character* leader) : leader(leader), warriors()
+{
+    if (leader->isInTeam() == true)
+    {
+        throw runtime_error("leader is already in team");
+    }
+
+    this->warriors.push_back(leader);
+    leader->setStatus(true);
+}
+
 int Team::getTeamSize()
 {
     return warriors.size();
@@ -14,7 +25,13 @@ vector<Character*>& Team::getWarriorsTeam()
 
 void Team::add(Character* newCharacter)
 {
-    warriors.push_back(newCharacter);
+    if (newCharacter->isInTeam() == true)
+    {
+        throw runtime_error("newCharacter is already in team");
+    }
+
+    this->warriors.push_back(newCharacter);
+    newCharacter->setStatus(true);
 }
 
 void Team::attack(Team* enemies)
@@ -44,7 +61,6 @@ void Team::attack(Team* enemies)
 
     cowboyAttack(enemies, theVictim);
     ninjaAttack(enemies, theVictim);
-
 }
 
 void Team::chooseNewLeader()
@@ -186,5 +202,22 @@ int Team::stillAlive()
 
 void Team::print()
 {
-    //TODO
+    for (unsigned int i=0; i<this->getWarriorsTeam().size(); i++)
+    {
+        if (Cowboy* cowboy = dynamic_cast<Cowboy*>(this->getWarriorsTeam()[i]))  // first print all cowboys
+        {
+            cout << cowboy->print() << endl;
+
+        }
+    }
+
+    for (unsigned int i=0; i<this->getWarriorsTeam().size(); i++)
+    {
+        if (Ninja* ninja = dynamic_cast<Ninja*>(this->getWarriorsTeam()[i])) // then print all the ninjas
+        {
+            cout << ninja->print() << endl;
+        }
+
+    }
+
 }

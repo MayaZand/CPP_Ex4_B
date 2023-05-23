@@ -2,6 +2,17 @@
 
 using namespace ariel;
 
+bool Character::isInTeam()
+{
+    return this->inTeam;
+}
+
+void Character::setStatus(bool status)
+{
+    this->inTeam = status;
+}
+
+
 bool Character::isAlive()
 {
     if (this->hitPoint <= 0)
@@ -58,7 +69,8 @@ string Character::print()
         output += "Hit Points: " + to_string(this->getHitPoints()) + "\n";
     }
 
-    output += "Location: " + this->location.print() + "\n";
+    output += "Location: (" + to_string(this->location.getX()) + "," + to_string(this->location.getY()) + ")";
+    //output += "Location: " + this->location.print() + "\n";
 
     return output;
 }

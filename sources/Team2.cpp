@@ -60,5 +60,18 @@ void Team2::attack(Team* enemies)
 
 void Team2::print() 
 {
-    
+    for (unsigned int i=0; i<this->getWarriorsTeam().size(); i++) // print all the team members in the order they were added
+    {
+        
+        if (Ninja* ninja = dynamic_cast<Ninja*>(this->getWarriorsTeam()[i]))
+        {
+            cout << ninja->print() << endl;
+        }
+
+        else if (Cowboy* cowboy = dynamic_cast<Cowboy*>(this->getWarriorsTeam()[i]))
+        {
+            cout << cowboy->print() << endl;
+
+        }
+    }
 }

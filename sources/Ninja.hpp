@@ -15,7 +15,7 @@ namespace ariel
     public:
         /* constructor: */
 
-        Ninja(string name, Point &location, int hitPoints, int speed) : Character(name, location, hitPoints), speed(speed) {}
+        Ninja(string name, Point& location, int hitPoints, int speed) : Character(name, location, hitPoints), speed(speed) {}
 
         /* METHODS: */
 

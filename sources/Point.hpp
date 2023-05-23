@@ -13,7 +13,7 @@ namespace ariel
 
     public:
         /* constructor: */
-        Point(double x, double y) : x_coordinate(x), y_coordinate(y) {}
+        Point(double x_coordinate, double y_coordinate) : x_coordinate(x_coordinate), y_coordinate(y_coordinate) {}
 
         /* METHODS: */
 

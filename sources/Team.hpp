@@ -32,7 +32,7 @@ namespace ariel
     @param enemyTeam is the pointer to the team of enemies.
     @return pointer to the victim.
     */
-    Character* chooseVictim(Team* enemyTeam);
+
 
     /*
     this method performs an attack using group members who are cowboys.
@@ -49,8 +49,9 @@ namespace ariel
     void ninjaAttack(Team* enemies, Character* victim);
 
     public:
+        Character* chooseVictim(Team* enemyTeam); //+++++++++++++++++++++++++++++++++++++++++++++++++++++++
         /* constructor & destructor: */
-        Team(Character* leader) : leader(leader), warriors(){};
+        Team(Character* leader);
         ~Team() = default;
 
         /* METHODS: */
