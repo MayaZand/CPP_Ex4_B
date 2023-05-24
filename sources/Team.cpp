@@ -141,6 +141,26 @@ Team &Team::operator=(Team &&other) noexcept
     return *this;
 }
 
+int Team::getTeamSize() const
+{
+    return (int)warriors.size();
+}
+
+const vector<Character *>& Team::getWarriorsTeam() const
+{
+    return warriors;
+}
+
+const Character* Team::getLeader() const
+{
+    return leader;
+}
+
+void Team::setLeader(Character *leader)
+{
+    this->leader = leader;
+}
+
 void Team::add(Character *newCharacter)
 {
     if (newCharacter->isInTeam() == true)

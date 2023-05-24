@@ -38,28 +38,22 @@ namespace ariel
         /*
         @return the size of the team (vector)
         */
-        int getTeamSize() const
-        {
-            return (int)warriors.size();
-        }
+        int getTeamSize() const;
 
         /*
         @return the pointer to the warriors team
         */
-        const vector<Character *>& getWarriorsTeam() const
-        {
-            return warriors;
-        }
+        const vector<Character *>& getWarriorsTeam() const;
+        
+        /*
+        @return the pointer to the team's leader.
+        */
+        const Character* getLeader() const;
 
-        const Character* getLeader() const
-        {
-            return leader;
-        }
-
-        void setLeader(Character *leader)
-        {
-            this->leader = leader;
-        }
+        /*
+        this method updates the team's leader.
+        */
+        void setLeader(Character *leader);
 
         /*
         this method will select a new leader from the team, if the existing leader dies.
